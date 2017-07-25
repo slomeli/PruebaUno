@@ -1,35 +1,44 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/ionic.css">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        var url = "http://proyectos.dcmexico.com/android/slom/CURD/json.php";
-        $.getJSON(url, function(result) {
-            console.log(result);
-            $.each(result, function(i, field) {
-                var id = field.id;
-                var title = field.title;
-                var duration = field.duration;
-                var price = field.price;
-                $("#listview").append("<a class='item' href='form.html?id=" + id + "&title=" + title + "&duration=" + duration + "&price=" + price + "'><span class='item-note'>$" + price + "</span><h2>" + title + " </h2><p>" + duration + "</p></a>");
-            });
-        });
-    });
-    </script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/ionic.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var url = "http://proyectos.dcmexico.com/android/slom/CURD/json.php";
+		$.getJSON(url, function(result) {
+			console.log(result);
+			$.each(result, function(i, field) {
+				var id = field.id;
+				var title = field.title;
+				var duration = field.duration;
+				var price = field.price;
+				$("#listview").append("<a class='item' href='form.html?id=" + id + "&title=" + title + "&duration=" + duration + "&price=" + price + "'><span class='item-note'>$" + price + "</span><h2>" + title + " </h2><p>" + duration + "</p></a>");
+			});
+		})
+		.done(function() {
+			console.log( "second success" );
+		})
+		.fail(function() {
+			console.log( "error" );
+		})
+		.always(function() {
+			console.log( "complete" );
+		});
+	});
+	</script>
 </head>
 
 <body>
-    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
-        <a href="index.html" class="button button-clear">Home</a>
-        <h1 class="title">Read Database (JSON)</h1>
-    </div>
-    <br/>
-    <br/>
-    <ul class="list" id="listview">
-    </ul>
+	<div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+		<a href="index.html" class="button button-clear">Home</a>
+		<h1 class="title">Read Database (JSON)</h1>
+	</div>
+	<br/>
+	<br/>
+	<ul class="list" id="listview">
+	</ul>
 </body>
 
 </html>
