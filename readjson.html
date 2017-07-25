@@ -6,19 +6,18 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		var url = "http://proyectos.dcmexico.com/android/slom/curd/json.php";
+		var url = "http://proyectos.dcmexico.com/android/slom/CURD/json.php";
 		$.getJSON(url, function(result) {
-			console.log(result);
-			$.each(result, function(i, field) {
+			cache:false			
+		})
+		.done(function( data ) {
+			$.each(data, function(i, field) {
 				var id = field.id;
 				var title = field.title;
 				var duration = field.duration;
 				var price = field.price;
 				$("#listview").append("<a class='item' href='form.html?id=" + id + "&title=" + title + "&duration=" + duration + "&price=" + price + "'><span class='item-note'>$" + price + "</span><h2>" + title + " </h2><p>" + duration + "</p></a>");
 			});
-		})
-		.done(function() {
-			console.log( "second success" );
 		})
 		.fail(function() {
 			console.log( "error" );
